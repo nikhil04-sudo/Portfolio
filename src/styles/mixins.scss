@@ -1,0 +1,79 @@
+@import './variables';
+
+// Responsive Breakpoints
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Container
+@mixin container {
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-sm;
+  padding-right: $spacing-sm;
+
+  @include sm {
+    padding-left: $spacing-md;
+    padding-right: $spacing-md;
+  }
+
+  @include lg {
+    padding-left: $spacing-lg;
+    padding-right: $spacing-lg;
+  }
+}
+
+// Flexbox Utilities
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Focus Ring
+@mixin focus-ring($color: $color-accent) {
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 2px;
+  }
+}
+
+// Backdrop Blur
+@mixin backdrop-blur($amount: 8px) {
+  backdrop-filter: blur($amount);
+  -webkit-backdrop-filter: blur($amount);
+}
+
+// Gradient
+@mixin gradient-to-br($from, $to) {
+  background: linear-gradient(to bottom right, $from, $to);
+}

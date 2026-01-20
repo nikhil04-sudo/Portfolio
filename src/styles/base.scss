@@ -1,0 +1,92 @@
+@import './variables';
+@import './mixins';
+
+// CSS Custom Properties
+:root {
+  --color-background: #{$color-background};
+  --color-surface: #{$color-surface};
+  --color-border: #{$color-border};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-accent: #{$color-accent};
+  --color-accent-hover: #{$color-accent-hover};
+}
+
+// Base Styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: $line-height-normal;
+  font-weight: $font-weight-normal;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+}
+
+a {
+  font-weight: $font-weight-medium;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+button {
+  border-radius: $radius-lg;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: $font-weight-medium;
+  font-family: inherit;
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-framer-appear-id] {
+    animation: none !important;
+  }
+}

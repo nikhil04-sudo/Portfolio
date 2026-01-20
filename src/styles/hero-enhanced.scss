@@ -1,0 +1,355 @@
+@import './variables';
+@import './mixins';
+
+// Enhanced Hero Section
+.hero-enhanced {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+    overflow: hidden;
+    padding: 10rem $spacing-md $spacing-3xl $spacing-md; // Increased top padding to clear header on all devices
+
+    // Animated background shapes
+    &__shapes {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    &__shape {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle,
+                rgba(37, 99, 235, 0.15),
+                rgba(59, 130, 246, 0.1),
+                transparent);
+        filter: blur(60px);
+    }
+
+    // Floating particles
+    &__particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    &__particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: rgba(37, 99, 235, 0.6);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(37, 99, 235, 0.8);
+    }
+
+    // Floating icons
+    &__floating-icons {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    &__icon {
+        position: absolute;
+        font-size: 2.5rem;
+        filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.3));
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    // Container
+    &__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 $spacing-lg;
+    }
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-3xl;
+        align-items: center;
+
+        @include lg {
+            grid-template-columns: 1.2fr 0.8fr;
+            text-align: left;
+        }
+    }
+
+    &__content {
+        text-align: center;
+        max-width: 100%;
+
+        @include lg {
+            text-align: left;
+        }
+    }
+
+    // Greeting Pill
+    &__greeting-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-sm;
+        padding: $spacing-xs $spacing-md;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        border-radius: 20px;
+        margin-bottom: $spacing-lg;
+    }
+
+    &__greeting-text {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #60a5fa;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    &__wave {
+        font-size: 1.25rem;
+    }
+
+    // Name
+    &__name {
+        margin-bottom: $spacing-sm;
+    }
+
+    &__name-text {
+        font-size: clamp(2.5rem, 8vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        background: linear-gradient(135deg,
+                #ffffff 0%,
+                #93c5fd 50%,
+                #3b82f6 100%);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 8s ease infinite;
+    }
+
+    // Title
+    &__title {
+        font-size: clamp(1.25rem, 4vw, 2rem);
+        margin-bottom: $spacing-lg;
+        color: $slate-100;
+        font-weight: 500;
+    }
+
+    &__title-main {
+        color: #3b82f6;
+        font-weight: 700;
+    }
+
+    // Description
+    &__description {
+        font-size: clamp(1rem, 2vw, 1.125rem);
+        line-height: 1.6;
+        color: $slate-300;
+        margin-bottom: $spacing-2xl;
+        max-width: 600px;
+
+        @media (max-width: 1024px) {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &__highlight {
+        color: #60a5fa;
+        font-weight: 600;
+    }
+
+    // Action buttons
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-md;
+        justify-content: center;
+        margin-bottom: $spacing-3xl;
+
+        @include lg {
+            justify-content: flex-start;
+        }
+    }
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-md;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        justify-content: center; // Center text/icon
+
+        @media (max-width: 640px) {
+            width: 100%; // Make buttons same size on mobile
+        }
+
+        &--primary {
+            background: #2563eb;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+            &:hover {
+                background: #1d4ed8;
+                transform: translateY(-2px);
+            }
+        }
+
+        &--outline {
+            background: rgba(15, 23, 42, 0.5);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+
+            &:hover {
+                border-color: rgba(37, 99, 235, 0.5);
+                background: rgba(37, 99, 235, 0.05);
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    &__btn-icon {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    &__btn:hover &__btn-icon {
+        transform: translateX(4px);
+    }
+
+    // Visual / Code Mockup
+    &__visual {
+        display: none;
+
+        @include lg {
+            display: block;
+            perspective: 1000px;
+        }
+    }
+
+    &__visual-inner {
+        transform: rotateY(-10deg) rotateX(5deg);
+        transition: transform 0.5s ease;
+
+        &:hover {
+            transform: rotateY(-5deg) rotateX(2deg);
+        }
+    }
+
+    &__code-mockup {
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    &__code-header {
+        background: rgba(255, 255, 255, 0.05);
+        padding: $spacing-md;
+        display: flex;
+        gap: $spacing-sm;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    &__dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+
+        &--red {
+            background: #ef4444;
+        }
+
+        &--yellow {
+            background: #f59e0b;
+        }
+
+        &--green {
+            background: #10b981;
+        }
+    }
+
+    &__code-body {
+        padding: $spacing-xl;
+        text-align: left;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+
+        pre {
+            margin: 0;
+        }
+
+        code {
+            color: #94a3b8;
+        }
+    }
+
+    // Social links
+    &__social {
+        display: flex;
+        gap: $spacing-xl;
+        justify-content: center;
+
+        @include lg {
+            justify-content: flex-start;
+        }
+    }
+
+    &__social-link {
+        color: $slate-400;
+        text-decoration: none;
+        font-size: clamp(0.875rem, 1vw, 1rem);
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: #3b82f6;
+        }
+    }
+
+    // Scroll indicator
+    &__scroll {
+        position: absolute;
+        bottom: $spacing-2xl;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-sm;
+        color: $slate-400;
+        font-size: 0.875rem;
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+            bottom: $spacing-lg;
+        }
+    }
+
+    &__scroll-line {
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(to bottom, #2563eb, transparent);
+        border-radius: 2px;
+    }
+}
